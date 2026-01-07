@@ -1,0 +1,90 @@
+Code 1: Simple Loop
+
+T.C wil be O(N) and space will be O(1)
+for (int i = 0; i < n; i++) {
+    cout << i;
+}
+
+Code 2: Nested Loops
+
+T.C will be O(n^2) and space will be O(1)
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        cout << i + j;
+    }
+}
+
+Code 3: Triangular Loop
+
+T.C will be O(n^2) and space will be O(1)
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j <= i; j++) {
+        cout << i * j;
+    }
+}
+
+Code 4: Logarithmic Loop
+
+T.C will be O(logn) and space will be O(1)
+for (int i = 1; i < n; i *= 2) {
+    cout << i;
+}
+
+
+Code 5: Nested Logarithmic Loop
+
+T.C will be O(n) and space will be O(1) 
+for (int i = 1; i < n; i *= 2) {
+    for (int j = 0; j < i; j++) {
+        cout << j;
+    }
+}
+
+Code 6: Binary Search
+
+T.C will be O(logn) and space will be O(1)
+int binarySearch(vector<int>& arr, int x) {
+    int l = 0, r = arr.size() - 1;
+    while (l <= r) {
+        int mid = l + (r - l) / 2;
+        if (arr[mid] == x) return mid;
+        else if (arr[mid] < x) l = mid + 1;
+        else r = mid - 1;
+    }
+    return -1;
+}
+
+Code 7: Recursive Fibonacci
+
+T.C will be O(2^n) and space will be O(n)
+int fib(int n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
+}
+
+Code 8: Merge Sort (simplified)
+
+T.C will be O(nlogn) and space will be O(n)
+void mergeSort(vector<int>& arr, int l, int r) {
+    if (l >= r) return;
+    int mid = (l + r) / 2;
+    mergeSort(arr, l, mid);
+    mergeSort(arr, mid + 1, r);
+    // merging step here
+}
+
+Code 9: Hash Map Lookup
+
+T.C will be O(n) space will be O(n)
+unordered_map<int, int> mp;
+for (int i = 0; i < n; i++) mp[i] = i * 2;
+cout << mp[5];
+
+Code 10: Matrix Traversal
+
+T.C will be O(n^2) and space will be O(1)
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+        cout << i << "," << j;
+    }
+}
