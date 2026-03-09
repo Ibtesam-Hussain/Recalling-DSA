@@ -15,12 +15,28 @@ class Node{
     }
 };
 
+void printLL(Node* &head){
+    Node* curr = head;
+    while (curr != NULL)
+    {
+        cout << curr->data << " -> ";
+        curr = curr->next;
+    }
+    cout << endl;    
+}
+
 
 int main(int argc, char const *argv[])
 {
     Node* node1 = new Node(101);
-    cout << node1->data << " -> ";
-    cout << node1->next;
-    // cout << endl << NULL;
+    Node* node2 = new Node(102);
+    Node* node3 = new Node(103);
+
+    Node* head = node1;
+    //hardcoded type 
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = NULL;
+    printLL(head);
     return 0;
 }
