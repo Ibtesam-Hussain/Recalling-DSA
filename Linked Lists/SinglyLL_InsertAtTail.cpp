@@ -30,12 +30,20 @@ void insertionAtTail(Node* &head, int data) {
     // newNode->next = NULL;     // ➜ dereferencing NULL when head->next is NULL
 
 
+
+    
+    // // FIXED: PREV LOGIC
+    // Node* newNode = new Node(data);
+    // head->next = newNode ;
+    // head = newNode; 
+
     Node* newNode = new Node(data);
 
     if (head == nullptr) {          // empty list case
         head = newNode;
         return;
     }
+
 
     Node* curr = head;
     while (curr->next != nullptr)    // walk to the last node
