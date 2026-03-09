@@ -64,7 +64,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 //              HEAD
-//  NULL ... <- DATA1 | NULL <- DATA1 | NULL <- DATA1 | NULL
+//  NULL ... <- DATA3 | NULL <- DATA2 | NULL <- DATA1 | NULL
 
 //OUTPUT: 
 // 101 ->
