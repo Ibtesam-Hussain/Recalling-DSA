@@ -22,42 +22,20 @@ void insertionAtTail(Node* &head, int data) {
 }
 
 
-void insertAtMiddle(Node* &head, int data){
+// VERSION 2: INSERTION WITH SELECTIVE POSITION
+void insertAtMiddle(Node* &head, int position, int data){
     Node* curr = head; 
     Node* newMiddleNode = new Node(data);
 
-    int len = 0;
+    int count = 0;
     
-    while (curr->next != NULL)
+    // reach at that pos first
+    while (count < position-1)
     {
         curr = curr->next;
-        len++; 
+        count++; 
     }
 
-    int midOfLL;
-    if (len % 2 == 0){
-        midOfLL = len / 2;
-    }
-    else{
-        midOfLL = (len + 1) / 2;
-    }
-    
-    //DEBUG:
-    // cout << "len " << len;
-    // cout << "mid " << midOfLL;
-
-    curr = head; //update curr pointer 
-
-    //  HEAD
-    //  DATA1 | NULL -> DATA2 | NULL -> DATA3 | NULL -> DATA_4 | NULL -> DATA_5 | NULL -> ... NULL
-    // mid is 2 then this while loop will make the DATA3 node temp head just before the insertion of newNode 
-    
-    while (midOfLL > 1)
-    {
-        curr = curr->next;
-        midOfLL--;
-    }
-    
     newMiddleNode->next = curr->next;
     curr->next = newMiddleNode;
     
@@ -78,17 +56,11 @@ int main(int argc, char const *argv[])
     insertionAtTail(head, 105);
     printLL(head);
 
-    cout << "after middle insert " << endl;
+    cout << "after position middle insertion " << endl;
 
-    insertAtMiddle(head, 1001);
-    printLL(head);
-    insertAtMiddle(head, 1002);
-    printLL(head);
+    insertAtMiddle(head, 3, 1001);
 
-    insertAtMiddle(head, 1003);
     printLL(head);
-
-    // printLL(head);
 
     return 0;
 }
@@ -100,7 +72,5 @@ int main(int argc, char const *argv[])
 // 101 -> 102 -> 103 ->
 // 101 -> 102 -> 103 -> 104 ->
 // 101 -> 102 -> 103 -> 104 -> 105 ->
-// after middle insert
-// 101 -> 102 -> 1001 -> 103 -> 104 -> 105 ->
-// 101 -> 102 -> 1001 -> 1002 -> 103 -> 104 -> 105 ->
-// 101 -> 102 -> 1001 -> 1003 -> 1002 -> 103 -> 104 -> 105 -> 
+// after position middle insertion
+// 101 -> 102 -> 103 -> 1001 -> 104 -> 105 ->  
