@@ -28,6 +28,20 @@ void deleteHead(Node* &head){
     delete temp; //free from memory too
 }
 
+void deleteTail(Node* &head){
+    // traverse till end
+    Node* curr = head;
+    while (curr->next->next != NULL)
+    {
+        curr = curr->next;
+    }
+    //agr curr->next barabar hogya NULL ke tou wohi hamara tail ha or usko hi delete krna ha
+    // cout << curr->data << endl;
+    delete curr->next;
+    curr->next = NULL;
+    
+}
+
 int main(int argc, char const *argv[])
 {
     Node * head = NULL;
@@ -45,5 +59,21 @@ int main(int argc, char const *argv[])
     cout << "After deleting head " << endl;
     deleteHead(head);
     printLL(head);
+
+    cout << "After deleting tail " << endl;
+    deleteTail(head);
+    printLL(head);
+
     return 0;
 }
+
+// OUTPUT:
+// 101 ->
+// 102 -> 101 ->
+// 103 -> 102 -> 101 ->
+// 104 -> 103 -> 102 -> 101 ->        
+// 105 -> 104 -> 103 -> 102 -> 101 -> 
+// After deleting head
+// 104 -> 103 -> 102 -> 101 ->        
+// After deleting tail
+// 104 -> 103 -> 102 ->
