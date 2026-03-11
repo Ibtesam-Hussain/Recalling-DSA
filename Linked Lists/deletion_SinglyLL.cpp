@@ -19,7 +19,13 @@ void insertionAtHead(Node* &head, int data){ //Node* &head will provide the exac
 }
 
 void deleteHead(Node* &head){
-    head = head->next; //2ND ELEM IN THE LL BECOMES HEAD WHILE THE ORIGINAL HEAD STILL REMAINS IN THE MEMRY
+    //2ND ELEM IN THE LL BECOMES HEAD WHILE THE ORIGINAL HEAD STILL REMAINS IN THE MEMRY
+    // head = head->next; 
+    
+    // MORE SAFER APPROACH BECAUSE I AM PLAYING WITH THE ORIGINAL HEAD NOT MAKING COPY OF IT 
+    Node* temp = head;
+    head = head->next;
+    delete temp; //free from memory too
 }
 
 int main(int argc, char const *argv[])
