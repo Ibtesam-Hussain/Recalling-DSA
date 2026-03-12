@@ -62,6 +62,12 @@ void deleteMiddleNode(Node* &head){
     // update curr pointer Node, so its one node before middle node
     curr = head;
 
+    while (mid > 1)
+    {
+        curr = curr->next;
+        mid--;
+    }
+
     Node* nodeToDelete = curr->next;
     curr->next = nodeToDelete->next;
     delete nodeToDelete;
@@ -84,13 +90,13 @@ int main(int argc, char const *argv[])
     insertionAtHead(head, 105); //head
     printLL(head);
 
-    cout << "After deleting head " << endl;
-    deleteHead(head);
-    printLL(head);
+    // cout << "After deleting head " << endl;
+    // deleteHead(head);
+    // printLL(head);
 
-    cout << "After deleting tail " << endl;
-    deleteTail(head);
-    printLL(head);
+    // cout << "After deleting tail " << endl;
+    // deleteTail(head);
+    // printLL(head);
 
     cout << "After deleting middle " << endl;
     deleteMiddleNode(head);
@@ -110,4 +116,4 @@ int main(int argc, char const *argv[])
 // After deleting tail
 // 104 -> 103 -> 102 ->
 // After deleting middle
-// 105 -> 103 -> 102 -> 101 ->
+// 105 -> 104 -> 102 -> 101 ->
