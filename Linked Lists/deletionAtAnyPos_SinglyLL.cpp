@@ -21,6 +21,21 @@ void insertionAtHead(Node* &head, int data){ //Node* &head will provide the exac
 void deleteAtAnyPos (Node* &head, int pos){
     Node* curr = head;
 
+
+    // CASE 1
+    if(pos = 1){
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    // CASE 2
+    if (head == NULL){
+        return;
+    }
+
+
     int count = 1;
     while (count < pos-1)
     {
@@ -53,9 +68,28 @@ int main(int argc, char const *argv[])
     printLL(head);
 
     cout << "delete at any position " << endl;
-    deleteAtAnyPos(head, 2);
+    deleteAtAnyPos(head, 4);
     printLL(head);
 
 
     return 0;
 }
+
+
+// DELETE HEAD POSITION
+// 101 ->
+// 102 -> 101 ->
+// 103 -> 102 -> 101 ->
+// 104 -> 103 -> 102 -> 101 ->        
+// 105 -> 104 -> 103 -> 102 -> 101 -> 
+// delete at head position
+// 104 -> 103 -> 102 -> 101 ->  
+
+// DELETE ANY POSITION
+// 101 ->
+// 102 -> 101 ->
+// 103 -> 102 -> 101 ->
+// 104 -> 103 -> 102 -> 101 ->        
+// 105 -> 104 -> 103 -> 102 -> 101 -> 
+// delete at any position
+// 105 -> 103 -> 102 -> 101 -> 
