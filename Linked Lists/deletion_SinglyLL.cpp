@@ -42,6 +42,34 @@ void deleteTail(Node* &head){
     
 }
 
+void deleteMiddleNode(Node* &head){
+    Node* curr = head;
+    int length = 0;
+    while (curr->next != NULL)
+    {
+        curr = curr->next;
+        length++;
+    }
+    
+    int mid;
+    if (length % 2 == 0){
+        mid = length / 2;
+    }
+    else{
+        mid = (length + 1) / 2;
+    }
+
+    // update curr pointer Node, so its one node before middle node
+    curr = head;
+
+    Node* nodeToDelete = curr->next;
+    curr->next = nodeToDelete->next;
+    delete nodeToDelete;
+
+    
+
+}
+
 int main(int argc, char const *argv[])
 {
     Node * head = NULL;
@@ -64,6 +92,10 @@ int main(int argc, char const *argv[])
     deleteTail(head);
     printLL(head);
 
+    cout << "After deleting middle " << endl;
+    deleteMiddleNode(head);
+    printLL(head);
+
     return 0;
 }
 
@@ -77,3 +109,5 @@ int main(int argc, char const *argv[])
 // 104 -> 103 -> 102 -> 101 ->        
 // After deleting tail
 // 104 -> 103 -> 102 ->
+// After deleting middle
+// 105 -> 103 -> 102 -> 101 ->
