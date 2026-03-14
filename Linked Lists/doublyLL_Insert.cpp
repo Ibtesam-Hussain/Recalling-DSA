@@ -41,12 +41,14 @@ void insertAtAnyPos(Node* &head, int pos, int data){
     Node* curr = head;
 
     int count = 1;
-    if (count < pos-1){
+
+    // FIX: THERE'S A LOOP HERE NOT IF CONDT    
+    while (count < pos-1){
         curr = curr->next;
         count++;
     }
 
-    curr = head; //reached 1 node before the actual position
+    // curr = head; //reached 1 node before the actual position <---- SHOULDN'T DO THIS, WHILE LOOP POSITION NODE SE PHELE HI ROK DERAHA HA (COUNT "<" POS-1) 
     Node* newNode = new Node(data);
     
     // first phase
@@ -90,6 +92,11 @@ int main(int argc, char const *argv[])
 
     insertAtAnyPos(head, 2, 1221);
     printDLL(head);
+    insertAtAnyPos(head, 3, 405);
+    printDLL(head);
+    insertAtAnyPos(head, 5, 666);
+    printDLL(head);
+
     return 0;
 }
 
@@ -108,3 +115,14 @@ int main(int argc, char const *argv[])
 // NULL <-> 101 <-> 102 <-> 103 <-> NULL
 // NULL <-> 101 <-> 102 <-> 103 <-> 104 <-> NULL        
 // NULL <-> 101 <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
+
+// 3.
+// OUTPUT: INSERT @ ANY K POSITION
+// NULL <-> 101 <-> NULL
+// NULL <-> 101 <-> 102 <-> NULL
+// NULL <-> 101 <-> 102 <-> 103 <-> NULL
+// NULL <-> 101 <-> 102 <-> 103 <-> 104 <-> NULL
+// NULL <-> 101 <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
+// NULL <-> 101 <-> 1221 <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL (K=2)
+// NULL <-> 101 <-> 1221 <-> 405 <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL (K=3)        
+// NULL <-> 101 <-> 1221 <-> 405 <-> 102 <-> 666 <-> 103 <-> 104 <-> 105 <-> NULL (K=5)
