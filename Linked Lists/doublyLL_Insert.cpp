@@ -36,6 +36,30 @@ void insertAtTail(Node* &tail, Node* &head, int data){
 
 }
 
+
+void insertAtAnyPos(Node* &head, int pos, int data){
+    Node* curr = head;
+
+    int count = 1;
+    if (count < pos-1){
+        curr = curr->next;
+        count++;
+    }
+
+    curr = head; //reached 1 node before the actual position
+    Node* newNode = new Node(data);
+    
+    // first phase
+    newNode->next = curr->next;
+    curr->next->prev = newNode;
+    
+    // 2nd phase
+    curr->next = newNode;
+    newNode->prev = curr;
+
+
+}
+
 int main(int argc, char const *argv[])
 {
     // Node* head = new Node(101);
@@ -63,6 +87,9 @@ int main(int argc, char const *argv[])
     insertAtTail(tail, head, 105);
     printDLL(head);
     
+
+    insertAtAnyPos(head, 2, 1221);
+    printDLL(head);
     return 0;
 }
 
