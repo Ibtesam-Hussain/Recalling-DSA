@@ -36,6 +36,7 @@ inline void printDLL(Node* &head){
         temp = temp->next;
     }
     cout << "NULL";
+    cout << endl;
 }
 
 #endif
