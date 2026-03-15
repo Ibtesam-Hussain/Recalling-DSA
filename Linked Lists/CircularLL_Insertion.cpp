@@ -27,16 +27,34 @@ void insertAtHead(Node* &head, int data){
     
 }
 
+void insertAtTail(Node* &tail, int data)
+{
+    Node* newNode = new Node(data);
+    Node* lastNode = tail;
+
+    while(lastNode->next != tail)
+        lastNode = lastNode->next;
+
+    lastNode->next = newNode;
+    newNode->next = tail;
+}
+
 int main(int argc, char const *argv[])
 {
     Node* head = NULL;
-
     insertAtHead(head, 10);
     printCLL(head);
     insertAtHead(head, 20);
     printCLL(head);
     insertAtHead(head, 30);
     printCLL(head);
-    // cout << " hello" << endl;
+
+
+    insertAtTail(head, 18);
+    printCLL(head);
+    insertAtTail(head, 11);
+    printCLL(head);
+    insertAtTail(head, 23);
+    printCLL(head);
     return 0;
 }
