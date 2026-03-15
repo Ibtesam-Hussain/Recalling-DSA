@@ -31,5 +31,18 @@ inline void printLL(Node* &head){
     cout << endl;
 }
 
+inline void printCLL(Node* &head){
+    Node* curr = head;
+    do
+    {
+        cout << curr->data << " -> ";
+        curr = curr->next;
+        
+    }
+    while (curr != head);
+    cout << "(back to HEAD)" << endl;
+    
+}
+
 
 #endif
