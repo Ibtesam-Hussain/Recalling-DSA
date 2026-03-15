@@ -33,6 +33,23 @@ void deleteAtHead(Node* &head){
     delete curr; //memory free of current head 
 }
 
+void deletionAtTail(Node* &tail){
+    // cout << "tail is " << tail->data << endl;
+
+    Node* lastNode = tail;
+                                    // tail
+    // NULL <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
+    tail = tail->prev;
+                            // tail
+    // NULL <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
+    if (tail != NULL){
+        tail->next = NULL;
+    }
+                            // tail
+    // NULL <-> 102 <-> 103 <-> 104 <-> NULL
+    delete lastNode;
+}
+
 
 int main(int argc, char const *argv[])
 {
@@ -56,5 +73,23 @@ int main(int argc, char const *argv[])
     cout << "Delete at head (2): " << endl;
     deleteAtHead(head);
     printDLL(head);
+
+    cout << "Delete at tail : " << endl;
+    deletionAtTail(tail);
+    printDLL(head);
     return 0;
 }
+
+
+// OUTPUT:
+// NULL <-> 100 <-> 101 <-> NULL
+// NULL <-> 100 <-> 101 <-> 102 <-> NULL
+// NULL <-> 100 <-> 101 <-> 102 <-> 103 <-> NULL
+// NULL <-> 100 <-> 101 <-> 102 <-> 103 <-> 104 <-> NULL
+// NULL <-> 100 <-> 101 <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
+// Delete at head :
+// NULL <-> 101 <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
+// Delete at head (2):
+// NULL <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
+// Delete at tail :
+// NULL <-> 102 <-> 103 <-> 104 <-> NULL
