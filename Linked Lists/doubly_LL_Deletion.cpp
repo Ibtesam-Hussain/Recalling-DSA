@@ -50,6 +50,21 @@ void deletionAtTail(Node* &tail){
     delete lastNode;
 }
 
+void deletionAtAnyPos(Node* &head, int pos){
+    Node* curr = head;
+    int count = 1;
+
+    while(count <= pos-1){
+        curr = curr->next;
+        count++;
+    }
+    // cout << "after while loop curr is " << curr->data << endl;
+    curr->prev->next = curr->next;
+    curr->next->prev = curr->prev;
+    delete curr;
+
+}
+
 
 int main(int argc, char const *argv[])
 {
@@ -77,6 +92,20 @@ int main(int argc, char const *argv[])
     cout << "Delete at tail : " << endl;
     deletionAtTail(tail);
     printDLL(head);
+
+    insertAtTail(tail, head, 1023);
+    insertAtTail(tail, head, 1045);
+    insertAtTail(tail, head, 1034);
+    printDLL(head);
+
+    cout << "Delete at position : " << endl;
+    deletionAtAnyPos(head, 3);
+    printDLL(head);
+
+    deletionAtAnyPos(head, 4);
+    printDLL(head);
+    
+    
     return 0;
 }
 
@@ -93,3 +122,7 @@ int main(int argc, char const *argv[])
 // NULL <-> 102 <-> 103 <-> 104 <-> 105 <-> NULL
 // Delete at tail :
 // NULL <-> 102 <-> 103 <-> 104 <-> NULL
+// NULL <-> 102 <-> 103 <-> 104 <-> 1023 <-> 1045 <-> 1034 <-> NULL
+// Delete at position :
+// NULL <-> 102 <-> 103 <-> 1023 <-> 1045 <-> 1034 <-> NULL
+// NULL <-> 102 <-> 103 <-> 1023 <-> 1034 <-> NULL
