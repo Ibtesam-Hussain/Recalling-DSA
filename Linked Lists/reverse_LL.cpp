@@ -5,11 +5,22 @@
 using namespace std;
 
 
+Node* edgeCase(Node* &head){
+    if (head == NULL || head->next == NULL){
+        return head;
+    }
+}
+
 // T.C IS O(N) AND S.C IS O(1)
 void reverseLL(Node* &head){
+
     Node* prev = NULL;
     Node* curr = head;
     Node* forward = NULL;
+
+    // handle edge case is any...
+    edgeCase(head);
+
     // looping till curr is NULL
     while (curr != NULL)
     {
@@ -30,6 +41,14 @@ int main(int argc, char const *argv[])
 {
 
     //insertion b4 reverse
+
+    // edge case 1
+    // Node* head = NULL;
+    // edge case 2
+    // Node* head = new Node(101);
+    // head->next = NULL;
+
+    // normal case
     Node* head = new Node(101);
     head->next = new Node(102);
     head->next->next = new Node(103);
