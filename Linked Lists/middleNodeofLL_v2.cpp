@@ -4,10 +4,29 @@
 
 using namespace std;
 
+Node* edgeCase(Node* &head){
+    if(head == NULL){
+        return nullptr;
+    }
+
+    if(head->next == NULL){
+        return head;
+    }
+
+    // if there's only two node
+    if(head->next->next == NULL){
+        return head->next; //2nd node will be treated as middle as its in between first & NULL node
+    }
+}
+
 
 int middleNodev2(Node* &head){
     // fast and slow ptrs concept optimizing T.C
     Node* curr = head;
+    
+    //adding edgecases
+    edgeCase(head);
+
     Node* fast;
     Node* slow;
 
@@ -34,14 +53,20 @@ int middleNodev2(Node* &head){
 
 int main(int argc, char const *argv[])
 {
-    Node* prev = NULL;
+    // Node* head = NULL;
+
+    // Node* head = new Node(23);
+
+    // Node* head = new Node(10);
+    // head->next = new Node(12);
+
     Node* head = new Node(101);
     head->next = new Node(102);
     head->next->next = new Node(103);
     head->next->next->next = new Node(104);
     head->next->next->next->next = new Node(105);
-    // head->next->next->next->next->next = new Node(106);
-    // head->next->next->next->next->next->next = new Node(107);
+    head->next->next->next->next->next = new Node(106);
+    head->next->next->next->next->next->next = new Node(107);
 
 
 
@@ -56,3 +81,16 @@ int main(int argc, char const *argv[])
 // Original LL :
 // 101 -> 102 -> 103 -> 104 -> 105 ->    
 // Mid Node : 103
+
+
+// Original LL : 
+// NULL
+// Mid Node : NULL
+
+// Original LL : 
+// 23 ->
+// Mid Node : 23
+
+// Original LL : 
+// 10 -> 12 ->
+// Mid Node : 12
