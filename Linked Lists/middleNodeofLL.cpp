@@ -5,11 +5,13 @@
 using namespace std;
 
 
-
+//OVERALL T.C IS O(N) OF THIS APPROACH
 int middleNode(Node* &head){
     Node* curr = head;
 
     int length = 1;
+
+    //O(N) IS THE T.C HERE EVEN IF WE USE STL WHICH IS getlenght()
     while (curr->next != NULL)
     {
         curr = curr->next;
@@ -60,3 +62,8 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+
+// Original LL :
+// 101 -> 102 -> 103 -> 104 -> 105 -> 106 -> 107 -> 
+// Mid Node : 104
