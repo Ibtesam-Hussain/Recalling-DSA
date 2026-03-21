@@ -19,6 +19,8 @@ Node* edgeCase(Node* &head){
     }
 }
 
+//T.C O(N/2) -> O(N) S.C O(1)
+//TRAVERSE OPTIMIZATION IS IMPROVED BCZ OF TWO PTR APPROACH
 
 int middleNodev2(Node* &head){
     // fast and slow ptrs concept optimizing T.C
